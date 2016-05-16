@@ -1,0 +1,42 @@
+<section>
+	<table class="table table-striped table-grid">
+	<thead>
+		<th>Name</th>
+		<th>Level</th>
+		<th>Code</th>
+		<th>Day</th>
+		<th>Date</th>
+		<th>Time</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="class in classes | orderBy:'waiting_list.length':true">
+			<td >{{class.name}}</td>
+			<td>{{class.level | level}}</td>
+			<td>{{class.code}}</td>
+			<td>{{class.days | days2Text}}</td>
+			<td>{{class.start_date | date}} - {{class.end_date | date}}</td>
+			<td>{{class.start_time}} - {{class.end_time}}</td>
+			<td>
+				<div class="dropdown">
+				 <button ng-init="class.isClick=false" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" ng-click="class.isClick = !class.isClick"a>
+				    Action({{class.waiting_list.length}})
+				    <span class="caret"></span>
+				  </button>
+					<ul ng-show="class.isClick">
+						<li show-to-roles="['teacher']"><a href="#/classes/{{class._id}}/edit">Edit</a> </li>
+						<li show-to-roles="['teacher']"><a href="#/classes/{{class._id}}/members">Students</a></li>
+						<li show-to-roles="['teacher']"><a href="#/classes/{{class._id}}/waiting_list">Waiting List</a></li>
+						<li show-to-roles="['teacher']"><a href="#/classes/{{class._id}}/waiting_payment">Waiting Payment</a> </li>
+						<li show-to-roles="['teacher','admin']"><a href="#/classes/{{class._id}}/stat">Stat</a> </li>
+						
+						<li show-to-roles="['teacher']"><a href="#/classes/{{class._id}}" target="_blank">Sign up(url)</a></li>
+						<li show-to-roles="['teacher']"><a href="#/classes/{{class._id}}/remove" class="remove" >Delete</a> </li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+
+</table>
+</section>

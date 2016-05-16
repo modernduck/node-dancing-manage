@@ -1,0 +1,26 @@
+<nav-menu></nav-menu>
+<h2>Available Courses</h2>
+<table class="table table-striped">
+	<thead >
+		<th>Name</th>
+
+		<th>Level</th>
+		<th>Teacher</th>
+		<th>Day</th>
+		<th>Date</th>
+		<th>Time</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in classes | orderBy:'level'">
+			<td style="vertical-align:middle">{{item.name}}</td>
+
+			<td style="vertical-align:middle">{{item.skill.name}} {{item.level}}</td>
+			<td style="vertical-align:middle">{{item.instructor}}</td>
+			<td style="vertical-align:middle">{{item.days | days2Text}} </td>
+			<td style="vertical-align:middle">{{item.start_date | date}}</td>
+			<td style="vertical-align:middle">{{item.start_time}}  - {{item.end_time}}</td>
+			<td><a href="#/classes/{{item._id}}" class="btn btn-primary" target="_blank">SIGN UP</a></td>
+		</tr>
+	</tbody>
+</table>

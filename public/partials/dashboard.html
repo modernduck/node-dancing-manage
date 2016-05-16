@@ -1,0 +1,52 @@
+<nav-menu></nav-menu>
+<h2>Waiting List</h2>
+<div ng-repeat="course in classes" ng-show="course.waiting_list.length > 0">
+	<h3>{{course.name}} Lv {{course.level}}</h3>
+	<table class='table table-striped' >
+		<thead>
+			<th>Name</th>
+			<th>Lead/Follow</th>
+			<th>Level</th>
+			<th></th>
+			<th></th>
+		</thead>
+		<tr ng-repeat="item in course.waiting_list">
+			<td>{{item.member.firstname}} {{item.member.lastname}} ({{item.member.nickname}})</td>
+			<td>{{item.is_lead | isLead}}</td>
+			<td>
+					<span ng-repeat="l in item.member.levels" ng-show="$parent.course.skill == l.skill" > {{l.level}}</span>
+
+
+			</td>
+			<td><button class="btn btn-primary" ng-click="$parent.approve(item, $parent.course)">Approve</button><td/>
+			<td><button class="btn btn-primary" ng-click="$parent.unapprove(item, $parent.course)">Unapprove</button><td/>
+		</tr>
+	</table>
+</div>
+<h2>Members</h2>
+<div class="row">
+	<div class="col-md-6">
+		<div style="text-align:center">
+			<h3>Lead/Follow</h3>
+  		</div>
+		
+		<canvas id="lead" class="chart chart-doughnut"
+  chart-data="leadData" chart-labels="leadLabels">
+  		
+		</canvas> 
+		<div style="text-align:center">
+  			{{leadCount}} : {{followCount}}
+  		</div>
+	</div>
+	<div class="col-md-6">
+		<div style="text-align:center">
+			<h3>Male/Female</h3>
+  		</div>
+		<canvas id="gender" class="chart chart-doughnut"
+  chart-data="genderData" chart-labels="genderLabels">
+		</canvas> 
+		<div style="text-align:center">
+			{{maleCount}} : {{femaleCount}}
+  		</div>
+	</div>
+</div>

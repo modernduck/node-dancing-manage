@@ -1,0 +1,29 @@
+<div class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav" ng-click="isCollapsed = !isCollapsed" ng-init="isCollapsed = false">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">
+				BKKSWING
+			</a>
+
+		</div>
+		<div id="main-nav" class="navbar-collapse collapse navbar-responsive-collapse" uib-collapse="!isCollapsed">
+			<ul class="nav navbar-nav">
+				<li ><a href="#/classes" show-to-roles="['teacher']" >Classes</a></li>
+				<li ><a href="#/members" show-to-roles="['admin']" >Members</a></li>
+				<li ><a href="#/payment/list"  show-to-roles="['payment']" >Payment</a></li>
+				<li ><a href="#/checkin"  show-to-roles="['admin','teacher']" >CHECK IN</a></li>
+				<li ><a href="#/allclass"  show-to-roles="['@']" >ALL CLASSES</a></li>
+			</ul>
+			<ul class="nav navbar-nav pull-right">
+				<li><a href="#/members/{{member_id}}" show-to-roles="['@']" >Profile</a></li>
+				<li><a href="" ng-click="logout()" show-to-roles="['@']">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+
+</div>

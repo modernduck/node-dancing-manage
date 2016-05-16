@@ -1,0 +1,96 @@
+<nav-menu></nav-menu>
+<div class="profile">
+
+	<div class="profile-info">
+		<div class="row">
+			<div class="profile-picture col-md-4">
+				<img check-image ng-src="hidden/images/profile/{{member._id}}" />
+			</div>
+			<div class="profile-data col-md-8">
+				<h2><b>{{member.firstname}} {{member.lastname}} </b>({{member.nickname}}) <a href="#/members/{{member._id}}/update" class="btn btn-primary btn-lg">Edit</a></h2>
+				<p>
+					Gender : {{member.gender |gender}} <br/>
+
+					<!--Join Date : {{member.create_time |date}}-->
+				</p>
+				<div class="profile-skill row">
+					<!--<div class="col-md-6">
+						<canvas id="radar" class="chart chart-radar"
+					  chart-data="data" chart-labels="labels">
+						</canvas> 
+					</div>
+					<div class="col-md-6">
+						<table class="table profile-skill-table">
+							<thead>
+								<th>Dance Style</th>
+								<th>Level</th>
+							</thead>
+							<tr ng-repeat="item in labels track by $index">
+								<td>{{item}}</td>
+								<td>{{levels[$index]}}</td>
+							</tr>
+						</table>
+					</div>-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="profile-history row">
+		<div class="profile-classes-log col-md-12">
+			<h2><b>My Classes</b></h2>
+			<table class="table table-striped">
+				<thead>
+					
+					<th>Class</th>
+					<th>Code</th>
+					<th>Course Date</th>
+					<!--<th>Lead/Follow</th>-->
+					<th>Level</th>
+					<th>Status</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in classes">
+						<td>{{item.class.name}}</td>
+						<td>{{item.class.code}}</td>
+						<td>{{item.class.start_date | date}}</td>
+						<!--<td>{{item.is_lead | isLead}}</td>-->
+						<td>{{item.class.level}}</td>
+						<td>{{item.status | learningStatus}}<!-- <button class="btn btn-danger " ng-click="cancel(item)">CANCEL</button>--></td>
+					</tr>
+				</tbody>
+			</table>
+		<div>
+	</div>
+	<div class="profile-current-payment row" show-to-roles="['payment','admin','owner']" member-id="member._id">
+		<div class="profile-payment-log col-md-12">
+			<h2><b>Your recent payment transaction.</b>  <a  class="btn btn-primary btn-raised" href="#/members/{{member._id}}/payment">UPLOAD ADDITONAL PAYMENT</a></h2>
+			
+			<table class="table table-striped">
+				<thead>
+					<th>Transaction Date/Time</th>
+					
+					<th>Amount</th>
+					<th>Slip</th>
+					
+					<th>Status</th>
+					
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in payments">
+						<td>{{item.dateTime | date:'short'}}</td>
+						
+						<td>{{item.amount | number}}</td>
+						<td><a href="{{item.filePath}}">SLIP</a></td>
+						
+
+						<td>{{item.status | paymentStatus}}</td>
+					
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+	
+
+</div>

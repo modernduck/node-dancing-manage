@@ -1,0 +1,21 @@
+<nav-menu></nav-menu>
+<h2>Available Courses</h2>
+<button class="btn btn-danger btn-raised" ng-click="toggleAvailableClass()">Toggle</button>
+<table class="table table-striped">
+	<thead>
+		<th>Course</th>
+		<th>Date</th>
+		<th>Time</th>
+		<th></th>
+	</thead>	
+	<tbody>
+		<tr ng-repeat="item in classes">
+			<td>{{item.name}}</td>
+			<td>{{item.start_date | date}} - {{item.end_date | date}}</td>
+			<td>{{item.start_time}} - {{item.end_time}}</td>
+			<td><a href="#/classes/{{item._id}}/checkin">CHECK IN </a></td>
+		</tr>
+
+	</tbody>
+
+</table>

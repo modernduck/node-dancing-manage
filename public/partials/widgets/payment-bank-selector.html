@@ -1,0 +1,17 @@
+<table class="payment payment-widget-banks table">
+	<thead>
+		<th>No.</th>
+		<th>Bank</th>
+		<th>Account's Number</th>
+		<th>Account's Name</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="bank in banks track by $index">
+			<td><input type="radio" name="bank_info_selector" ng-model="selectedBank" ng-model="bank"></td>
+			<td>{{bank.name}}</td>
+			<td>{{bank.account}}</td>
+			<td>{{bank.owner}}</td>
+		</tr>
+
+	</tbody>
+</table>

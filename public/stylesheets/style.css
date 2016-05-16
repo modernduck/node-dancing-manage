@@ -1,0 +1,139 @@
+.class-signup
+{
+	background-color: #fff;
+	position: relative;;
+	/*border: 1px solid rgba(0,0,0,0.5);*/
+
+}
+
+.class-signup .class-signup-cover
+{
+	height: 380px;
+	background: url(/assets/images/thankyou.jpg);
+	
+}
+
+.class-signup .class-signup-cover-sorry
+{
+	height: 380px;
+	background: url(/assets/images/sorry.jpg);
+	
+}
+
+.class-signup .class-signup-content
+{
+	padding: 10px;
+	min-height: 380px;
+}
+
+.class-signup  .class-signup-level
+{	
+	color:#909090;
+}
+
+.class-signup-new,.class-signup-old
+{
+	text-align: right;
+	font-size:0.8em;
+}
+
+.class-signup-date
+{
+	position: absolute;
+	top: 340px;
+	right:20px;
+	font-weight: bold;
+	font-size:1.5em;
+	text-align: right;
+	color:white;
+	text-shadow:0px 0px 5px rgba(0,0,0, 0.5);
+}
+
+.class-signup-price span
+{
+	font-weight: 400;
+}
+
+.class-signup-form
+{
+	background: #FAFAFA;
+	padding:10px;
+	box-shadow: 0px 0px 1px #909090;
+	
+}
+
+a.remove
+{
+	color:#face00;
+}
+
+
+/*
+	Member Widget
+*/
+
+.table.table-member tr > td
+{
+	vertical-align: middle !important;
+
+}
+
+tr.checkin-true, .table-striped>tbody>tr.checkin-true:nth-of-type(odd)
+{
+	background: #C3FFCD;
+}
+
+.login-page
+{
+	max-width: 550px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+
+.login-page .img-wrapper
+{
+	text-align: center;
+}
+
+.login-page img
+{
+	width: 250px;
+
+}
+
+.login-page input[type="submit"]
+{
+	width: 100%;
+}
+
+
+
+.profile-history
+{
+	
+}
+
+.profile-skill-table 
+{
+	
+}
+
+.profile-picture
+{
+	max-width: 250px;
+
+}
+
+.profile-picture img
+{
+	max-width: 100%;
+}
+
+.cropArea {
+    background: #E4E4E4;
+    overflow: hidden;
+    width:500px;
+    height:350px;
+}

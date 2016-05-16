@@ -1,0 +1,13 @@
+<div class="login login-page">
+	<form ng-submit="login()">
+	<div class="img-wrapper">
+		<img src="http://bangkokswing.com/wp-content/uploads/BangkokSwingLogoLarge.png" />
+	</div>
+	<label>Email</label>
+		<input ng-model="email" type="text" placeholder="Ex. oat@bangkokswing.com" class="form-control"><br/>
+	<label>Password</label>
+	<input ng-model="password" type="password" placeholder="Ex. swingisgood" class="form-control"><br/>
+	<input type="submit" ng-click="login()" class="btn btn-primary btn-raised">
+	If you are not a member yet please sign up <a href="#/register" class="btn btn-danger"> Here</a>
+</form>
+</div>

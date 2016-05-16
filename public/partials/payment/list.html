@@ -1,0 +1,134 @@
+<nav-menu></nav-menu>
+<payment-report transactions="transactions"></payment-report>
+<h2>Status</h2>
+<div class="row">
+	<div class="col-md-6">
+		<input type="text" class="form-control" ng-model="search" placeholder="Filter...">
+	</div>
+	<div class="col-md-3">
+		<select ng-model="status" ng-init="status='1'">
+			<option value="1">Waiting to confirm</option>
+			<option value="2">Confirm</option>
+			<option value="3">Denial</option>
+		</select>
+	</div>
+
+</div>
+<table class="table" >
+	<thead>
+		<th>Slip</th>
+		<th>Transaction Date</th>
+		<th>Transaction Time</th>
+		<th>Type</th>
+		<th>Amount</th>
+		
+		<th>Noted</th>
+		<th>From</th>
+		<th>Update</th>
+		<th>Create Time</th>
+		
+		<th></th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in transactions | orderBy:'user._id'| filter:{status:status} | filter:search ">
+			
+			<th><button ng-click="item.isShow=true" class="btn" ng-hide="item.isShow">SHOW</button><a href="" ng-click="item.isShow=false"><img src="{{item.filePath}}" ng-show="item.isShow"></a></td>
+			<td>{{item.dateTime | date}}</td>
+			<td>{{item.dateTime | date:'shortTime'}}</td>
+			<td>
+				<select ng-model="item.type">
+					<option value="0">Transfer</option>
+					<option value="1">Cash</option>
+				</select>
+			</td>
+			<td><span ng-hide="item.is_update&&item.status==1">{{item.amount}}</span>
+				<input type="number" ng-show="item.is_update&&item.status==1" ng-model="item.amount" />
+			</td>
+			
+			<td><input type="text" ng-model="item.mark" /></td>
+
+			<td><a href="#/members/{{item.user._id}}">{{item.user.firstname}} {{item.user.lastname}}</a></td>
+
+			<td>
+				<input type="checkbox" ng-hide="item.status!=1" ng-model="item.is_update" ng-init="item.is_update=true">Update
+				<div ng-repeat="item_class in item.classes" class="row" ng-show="item.is_update">
+					{{item_class.class.code}}
+					<input type="number" placeholder="Amount" ng-model="item_class.amount" ng-hide="item.status!=1" />
+					<span ng-show="item.status!=1">: {{item_class.amount}}</span>
+				</div>
+			</td>
+			<td>{{item.create_time | date:'short'}}</td>
+
+			<td>
+				<button ng-show="item.status==1" class="btn btn-primary" ng-click="confirm(item)">Confirm</button> <button ng-show="item.status==1" class="btn btn-danger" ng-click="deny(item)">Deny</button>
+				<button ng-hide="item.status==1" class="btn btn-danger" ng-click="move(item)">Move Back</button>
+			</td>
+		</tr>
+	</tbody>
+
+</table>
+<!--
+<h2>Confirm payment</h2>
+<table class="table" >
+	<thead>
+		<th>Slip</th>
+		<th>Transaction Date</th>
+		<th>Transaction Time</th>
+		<th>Amount</th>
+		
+		<th>Noted</th>
+		<th>From</th>
+		
+		<th>Create Time</th>
+		
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in transactions | filter:{status:2}">
+			
+			<th><button ng-click="item.isShow=true" class="btn" ng-hide="item.isShow">SHOW</button><a href="" ng-click="item.isShow=false"><img src="{{item.filePath}}" ng-show="item.isShow"></a></td>
+			<td>{{item.dateTime | date}}</td>
+			<td>{{item.dateTime | date:'shortTime'}}</td>
+			<td>{{item.amount | number}}</td>
+			
+			<td>{{item.mark}}</td>
+
+			<td><a href="#/members/{{item.user._id}}">{{item.user.firstname}} {{item.user.lastname}}</a></td>
+		
+			<td>{{item.create_time | date:'short'}}</td>
+			
+		</tr>
+	</tbody>
+
+</table>
+<h2>Denial payment</h2>
+<table class="table" >
+	<thead>
+		<th>Slip</th>
+		<th>Transaction Date</th>
+		<th>Transaction Time</th>
+		<th>Amount</th>
+		
+		<th>Noted</th>
+		<th>From</th>
+		
+		<th>Create Time</th>
+		
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in transactions | filter:{status:3}">
+			
+			<th><button ng-click="item.isShow=true" class="btn" ng-hide="item.isShow">SHOW</button><a href="" ng-click="item.isShow=false"><img src="{{item.filePath}}" ng-show="item.isShow"></a></td>
+			<td>{{item.dateTime | date}}</td>
+			<td>{{item.dateTime | date:'shortTime'}}</td>
+			<td>{{item.amount | number}}</td>
+			
+			<td>{{item.mark}}</td>
+
+			<td><a href="#/members/{{item.user._id}}">{{item.user.firstname}} {{item.user.lastname}}</a></td>
+		
+			<td>{{item.create_time | date:'short'}}</td>
+		
+		</tr>
+	</tbody>
+
+</table>-->

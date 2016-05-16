@@ -1,0 +1,32 @@
+<nav-menu></nav-menu>
+<h2>{{header}}</h2>
+
+<table class='table table-striped'>
+	<thead>
+		<th></th>
+		<th>Name</th>
+		<th>Last Name</th>
+		<th>Gender</th>
+		<th>Lead/Follow</th>
+		<th>Level</th>
+		<th ng-hide="isReadOnly"></th>
+		<th  ng-hide="isReadOnly"></th>
+
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in items">
+			<td><img check-image ng-src="hidden/images/profile/{{item.member._id}}" style="height:80px;" /></td>
+			<td><a href="#/members/{{item.member._id}}">{{item.member.firstname}} </a>({{item.member.nickname}})</td>
+			<td><a href="#/members/{{item.member._id}}">{{item.member.lastname}}</a></td>
+			<td>{{item.member.gender | gender}}</td>
+			<td>{{item.is_lead |isLead}}</td>
+			<td>
+				
+				<span ng-repeat="l in item.member.levels" ng-show="$parent.$parent.skill._id == l.skill" > {{l.level}}</span>
+
+			</td>
+			<td ng-hide="isReadOnly"><button class="btn btn-primary" ng-click="approve(item)">Approve</button></td>
+			<td  ng-hide="isReadOnly"><button class="btn btn-danger" ng-click="unapprove(item)">Un Approve</button></td>
+		</tr>
+	</tbody>
+</table>

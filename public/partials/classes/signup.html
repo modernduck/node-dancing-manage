@@ -1,0 +1,149 @@
+<nav-menu></nav-menu>
+<div class="container">
+	<section class="class-signup">
+		<div class="class-signup-cover">
+			
+		</div>
+		<div class="class-signup-content">
+			<div class="form form-class">
+				<div class="class-signup-date">
+					<span class="">{{class.start_date | date}} - {{class.end_date | date}}</span>
+				</div>
+				<h2>{{class.name}} <span class="class-signup-level">(Level {{class.level | level }})</span> </h2>
+				<b>Teacher : {{class.instructor}}</b>
+				<p>{{class.description}}</p>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="class-signup-price">
+							<span>Date : </span>{{class.start_date | date}} - {{class.end_date | date}}
+						</div>
+						<div class="class-signup-price">
+							<span>Time : </span>Every {{class.days | days2Text}} {{class.start_time}} - {{class.end_time}}
+						</div>
+						
+						<div class="class-signup-price">
+
+							<span>Price : </span>{{class.price}} THB
+						</div>
+						<div class="class-signup-price">
+							<span>Where : </span><a href="http://thehopbangkok.com/location">The Hop</a>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<section ng-hide="isSignup" >
+						
+							<h5>Membership</h5>
+							<form class="class-signup-form" ng-submit="signup()"  enctype="multipart/form-data">
+							<div class="row">
+								<div class="col-md-12">
+									<input type="email" ng-model="member.email" placeholder="Email" class="form-control" />
+								</div>
+								<div class="col-md-12">
+									<input type="password"  ng-model="member.password" placeholder="Password" class="form-control" />
+								</div>
+								<div class="col-md-12">
+									<!--<input type="file" ngf-select ng-model="picFile" name="file"    
+							             accept="image/*" ngf-max-size="2MB" required
+							             ngf-model-invalid="errorFiles">-->
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										
+										<div class="radio">
+											<label>
+												<input type="radio" ng-required  ng-model="member.is_lead" ng-value="true">
+												<span class="circle"></span>
+												<span class="check"></span>
+												Lead
+											</label>
+											<label>
+												<input type="radio" ng-required  ng-model="member.is_lead" ng-value="false">
+												<span class="circle"></span>
+												<span class="check"></span>
+												Follow
+											</label>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							
+							<div >
+								<input type="submit" value="Sign Up!" class="btn btn-primary btn-raised btn-block"/>
+							</div>
+							</form>
+							<div class="class-signup-new" >
+								<span style="font-size:1.2em;">Create account here before signing up</a> <a class="btn btn-danger " href="#/register" ng-click="isSignup=true;">Create Account</a>
+							</div>
+
+						
+						</section>
+						<section  ng-show="isSignup">
+							<form class="class-signup-form" ng-submit="signup()"  enctype="multipart/form-data">
+								<h5>Register to membership</h5>
+								<div class="row">
+									<div class="col-md-12">
+										<input type="text" ng-model="member.firstname" placeholder="First Name" class="form-control" />
+									</div>
+									<div class="col-md-12">
+										<input type="text" ng-model="member.lastname" placeholder="Last Name" class="form-control" />
+									</div>
+									<div class="col-md-12">
+										<input type="text" ng-model="member.phone" placeholder="Phonenumber" class="form-control" />
+									</div>
+									<div class="col-md-12">
+										<input type="email" ng-model="member.email" placeholder="Email" class="form-control" />
+									</div>
+									<div class="col-md-12">
+										<input type="password" ng-model="member.new_password" placeholder="Password" class="form-control" />
+									</div>
+									<div class="col-md-12">
+										<input type="password" ng-model="member.renew_password" placeholder="Re - Password" class="form-control" />
+									</div>
+
+									<div class="col-md-12">
+										<input type="file" ngf-select ng-model="picFile" name="file"    
+							             accept="image/*" ngf-max-size="2MB" required
+							             ngf-model-invalid="errorFiles">
+									</div>
+									<div class="col-md-12">
+										<div class="radio">
+											<label>
+												<input type="radio"  ng-model="member.is_lead" ng-value="true">
+												<span class="circle"></span>
+												<span class="check"></span>
+												Lead
+											</label>
+											<label>
+												<input type="radio"  ng-model="member.is_lead" ng-value="false">
+												<span class="circle"></span>
+												<span class="check"></span>
+												Follow
+											</label>
+										</div>
+								</div>
+								
+								<div >
+									<input type="submit" value="Sign Up!" class="btn btn-primary btn-raised btn-block"/>
+								</div>
+								<div class="class-signup-new" ng-hide="isSignup">
+									if you are not membership yet you could <button class="btn btn-danger ">Signup here</button>
+								</div>
+							</form>
+							<div class="class-signup-old" ng-show="isSignup">
+								if you are already membership  you could <a href='#/register' class="btn btn-danger ">Signup here</a>
+							</div>
+							
+						</section>
+					</div>
+				</div>
+				
+				
+
+			</div>
+
+
+		</div>
+
+	</section>
+</div>

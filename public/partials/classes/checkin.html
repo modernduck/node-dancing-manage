@@ -1,0 +1,54 @@
+<nav-menu></nav-menu>
+<h2>CHECK IN <span style="color:red">{{class.name}}</span> #{{now | date}}</h2>
+<button class="btn btn-primary btn-raised" ng-click="doWalkin()">Search member</button>
+<a class="btn btn-primary btn-raised" href="#/register">Register Member</a>
+<member-checkin members="members" on-checkin="checkin(member)" on-un-checkin="uncheckin(member)"></member-checkin>
+ <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Search for WALK-IN member</h3>
+        </div>
+        <div class="modal-body">
+        	<div ng-hide="isConfirmMode">
+	        	<input type="text" placeholder="Filter" ng-model="q" class="form-control" />
+	            <table class="table table-striped">
+					<thead>
+						<th>Name</th>
+						<th>Last Name</th>
+						<th>Gender</th>
+						<th>Email</th>
+						
+						<th></th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="member in members | filter:q">
+							<td>{{member.firstname}}</td>
+							<td>{{member.lastname}}</td>
+							<td>{{member.gender | gender}}</td>
+							<td>{{member.email}}</td>
+							
+							<td><button class="btn btn-primary btn-raised" ng-click="select(member)" >SELECT</a></td>
+						</tr>
+					</tbody>
+
+				</table>
+            </div>
+            <div ng-show="isConfirmMode">
+            	<h2>{{selectedMember.firstname}} {{selectedMember.lastname}}</h2>
+            	<div class="row">
+            		<div class="col-md-6">
+            			Amount of payment : <input type="number" ng-model="selectedMember.amount" placeholder="Amount" />
+            		</div>
+            		<div class="col-md-6">
+            			<input type="checkbox" ng-model="selectedMember.is_lead" />{{selectedMember.is_lead | isLead}}
+
+            		</div>
+            	</div>
+            	<button class="btn btn-primary btn-raised" ng-click="confirm()">Confirm</button>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>

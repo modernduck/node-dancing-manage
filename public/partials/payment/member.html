@@ -1,0 +1,53 @@
+﻿<nav-menu></nav-menu>
+<h2>Transfer Status</h2>
+
+<table class="table">
+	<thead>
+		<th>Transaction</th>
+		<th>Date<th>
+		<th>Time</th>
+		<th>Amount</th>
+		<th>Status</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in transactions">
+			<td>{{item.id}}</td>
+			<td>{{item.date | date}}</td>
+			<td>{{item.hours}}:{{item.mins}}</td>
+			<td><a ng-click="isShow=true;" ng-hide="isShow" href="">{{item.amount}}</a><form ng-submit="isShow=false;"><input type="number" ng-model="item.amount" ng-show="isShow" ><input type="submit" ng-show="fasle"></form></td>
+			<td>{{item.status}}</td>
+		</tr>
+	</tbody>		
+</table>
+<h2>Current Register Courses</h2>
+<table class="table">
+	<thead>
+		<th>Course</th>
+		<th>Price</th>
+		<th>Status</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Lindy Hop(Beginner)</td>
+			<td>2400</td>
+			<td>
+				<select>
+					<option >Decline</option>
+					<option selected>Waiting for confirm</option>
+					<option>Confirm</option>
+				</select>
+				</td>
+		</tr>
+		<tr>
+			<td>Jizz Step(Beginner)</td>
+			<td>3500</td>
+			<td><select>
+					<option >Decline</option>
+					<option >Waiting for confirm</option>
+					<option selected>Confirm</option>
+				</select>
+
+			</td>
+		</tr>
+	</tbody>
+</table>

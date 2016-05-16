@@ -1,0 +1,68 @@
+<nav-menu></nav-menu>
+<section class="payment payment-waitng-page">
+	<div ng-show="isLoading">
+		<h2>Uploading... Please be patiant</h2>
+		<img src="images/loading.gif" /><span style="font-size:3em;">{{percent}}%</span>
+	</div>
+	<form ng-submit ="submit(file)"enctype="multipart/form-data" ng-hide="isLoading" >
+		<div >
+			<h2>1.) Please transfer to the following account</h2>
+		</div>
+		<h3>Bank Account</h3>
+		<payment-bank-selector banks="banks"></payment-bank-selector>
+		<h2>2.) Select the course(s) you wish to pay for</h2>
+		<table class="table table-striped">
+			<thead>
+				<th></th>
+				<th>Code</th>
+				<th>Class</th>
+				<th>Lead/Follow</th>
+				<th>Price</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in classes">
+					<td><input type="checkbox" ng-model="item.isSelected"></td>
+					<td>{{item.class.code}}</td>
+					<td>{{item.class.name}}</td>
+					<td>{{item.class.waiting_payment | filterByMemberId:member_id |isLead}}</td>
+					<th>{{item.class.price}}</th>
+				</tr>
+				
+			</tbody>
+
+		</table>
+		<h2>3.) Fill in receipt's detail and upload your receipt</h2>
+		<label>Transfer Date*</label>
+		<input ng-model="transfer.date" type="date" placeholder="Transfer Date" class="form-control">
+		<label>Transfer Time*</label>
+		<div class="row">
+			 <uib-timepicker ng-model="transfer.time"  show-meridian="true"></uib-timepicker>
+
+			<!--<div class="col-md-5">
+				<input type="number" ng-model="transfer.hour" class="form-control" placeholder="8" min="0" max="23"> 
+			</div>
+			<div class="col-md-1">
+				<span style="font-size:1.5em;font-weight:bold;">:</span>
+			</div>
+			<div class="col-md-6">
+				<input type="number" ng-model="transfer.minute" class="form-control" placeholder="30" min="0" max="59"> 
+			</div>-->
+		</div>
+		<label>Amount</label>
+		<input type="number" ng-model="transfer.amount" placeholder="Amount.." class="form-control" />
+		<label>Note</label>
+
+
+		<textarea ng-model="transfer.mark" class="form-control">this payment for ...</textarea>
+		
+		<label>Receipt</label>
+		<input type="file" ngf-select ng-model="file" name="file" accept="image/*" ngf-max-size="10MB" required ngf-model-invalid="errorFiles" ngf-resize="{width: 500, height: 500}" >
+
+		
+		<!--<span style="color:red;font-size:1.2em;">You have not registered for any course. Please go to <a href="http://bangkokswing.com/course">Bangkok swing</a> to register. </span>-->
+
+			
+
+		<input type="submit" class="btn btn-primary btn-raised" value="submit">
+	<form>
+</section>

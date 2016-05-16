@@ -1,0 +1,41 @@
+<table class="table table-striped  hidden-xs">
+	<thead style="background:black;color:white;">
+		<th>Name</th>
+
+		<th>Level</th>
+		<th>Teacher</th>
+		<th>Day</th>
+
+		<th>Date</th>
+		<th>Time</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in classes | orderBy : 'level'" >
+			<td style="vertical-align:middle">{{item.name}} </td>
+			<td style="vertical-align:middle">{{item.level}}</td>
+			<td style="vertical-align:middle">{{item.instructor}}</td>
+			<td style="vertical-align:middle">{{item.days | days2Text}} </td>
+			
+			<td style="vertical-align:middle">{{item.start_date | date}}</td>
+			<td style="vertical-align:middle">{{item.start_time}}  - {{item.end_time}}</td>
+			<td><a href="#/classes/{{item._id}}" class="btn btn-primary" target="_blank">SIGN UP</a></td>
+		</tr>
+	</tbody>
+</table>
+<div class="row visible-xs-block " ng-repeat="item in classes | orderBy : 'level'" >
+	<div class="col-xs-12">
+		<section style="padding:2px;border:1px solid #009688;margin-bottom:5px;">
+		<div style="text-align:center;">
+			<h4>{{item.name}}</h4>
+		</div>
+		Level : {{item.level}}<br/>
+		Teacher : {{item.instructor}}<br/>
+		Days : {{item.days | days2Text}} <br/>
+		Date : {{item.start_date | date}}<br/>
+		Time : {{item.start_time}}  - {{item.end_time}}<br/>
+		<a href="#/classes/{{item._id}}" class="btn btn-primary btn-raised btn-lg" style="width:100%" target="_blank">SIGN UP</a>
+		</section>
+	</div>
+
+</div>

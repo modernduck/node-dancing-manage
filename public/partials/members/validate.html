@@ -1,0 +1,20 @@
+<nav-menu></nav-menu>
+<div >
+	<h2>Step 2 : Please validate your account</h2>
+	<div style="text-align:center">
+		
+	</div>
+	<div class="well" ng-hide="code.length > 0">
+		<p>You are now <b>almost</b> a member of The Hop. We have just sent you a top secret code in your inbox. Please check your email to get the code for the box below. Thank you!!</p>
+	</div>
+	<div class="well" ng-show="code.length > 0">
+		<p>Woohoo!!!!!!. Just click the submit button below and you're done. :)</p>
+	</div>
+	<form ng-submit="validate()">
+		<label>Code</label>
+		<input type="text" ng-model="code" class="form-control" placeholder="Code..">
+		<input type="submit" class="btn btn-primary btn-raised" />
+	</form>
+	
+
+</div>

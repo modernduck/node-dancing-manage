@@ -1,0 +1,164 @@
+<nav-menu></nav-menu>
+<section class="form">
+	<form ng-submit="save()">
+		<div class="form-group">
+			<label>
+				<input type="radio" ng-model="class.type"  ng-value="'workshop'" name="type"  />Workshop <br/>
+			</label>
+			<label>
+				<input type="radio" ng-model="class.type"  ng-value="'course'"  name="type" />Course <br/>
+				</label>
+			
+		</div>
+		<div class="">
+			<input type="text" ng-model="class.name" placeholder="Name" class="form-control">
+		</div>
+		
+		<div class="">
+			<label>Restrict Skill</label>
+			<select class="form-control" ng-model="class.skill" ng-options="item._id as item.name for item in skills track by item._id">
+				
+			</select>
+		</div>
+		<div class="">
+			<label>Restrict Level</label>
+			<select class="form-control" ng-model="class.level">
+				<option value="" disabled selected>Level</option>
+				<option value="{{item}}" ng-repeat="item in [0,1,2,3,4,5]">{{item}}</option>
+			</select>
+		</div>
+		<div class="">
+			<div class="checkbox">
+				<label ng-repeat="day in ['Mon ', 'Tue ','Wed ','The ','Fri ', 'Sat ', 'Sun '] track by $index">
+					<input type="checkbox"  ng-model="$parent.class.days[$index]">
+					<span class="checkbox-material">
+						<span class="check"></span>
+					</span>
+					{{day}} 
+				</label>
+				
+			
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label>Start Date</label>
+				<input type='date' placeholder="Start Date" ng-model="class.start_date" class="form-control" />
+			</div>
+			<div class="col-md-6">
+				<label>End Date</label>
+				<input type='date' placeholder="End Date" ng-model="class.end_date" class="form-control"  />
+				
+			</div>
+			
+			
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				
+				<input type="text" class="form-control" placeholder="Start Time (Like 10.00)" ng-model="class.start_time"  />
+			</div>
+			<div class="col-md-6">
+				
+					<input type="text" class="form-control" placeholder="End Time (Like 10.00)" ng-model="class.end_time"  />
+			</div>
+			
+			
+		</div>
+		<div class="">
+			<input type="text" ng-model="class.instructor" class="form-control" placeholder="Teacher" />
+			<!--Code : {{class | classCode:skills}}-->
+			<!--<input type="text" ng-model="class.code" class="form-control" placeholder="CODE">-->
+		</div>
+		<div class="">
+			<input type="number" ng-model="class.price" placeholder="Price" class="form-control">
+		</div>
+		
+		
+		
+		
+		<div class="">
+			<!--<input type='file' placeholder="Cover Page"  class="form-control"  />-->
+		</div>
+
+		
+		<!--<div class="">
+
+			<div class="checkbox">
+				<label >
+
+					<input type="checkbox"  ng-model="class.auto_approve">
+					<span class="checkbox-material">
+						<span class="check"></span>
+					</span>
+					Auto Accept when people register 
+				</label>
+				
+			
+			</div>
+		</div>-->
+		<div class="">
+
+			<div class="checkbox">
+				<label style="color:red;">
+
+					<input type="checkbox"  ng-model="class.pre_approve">
+					<span class="checkbox-material">
+						<span class="check"></span>
+					</span>
+					Need to pre approve before signup
+				</label>
+				
+			
+			</div>
+		</div>
+		<div class="">
+			<div class="checkbox">
+				<label >
+
+					<input type="checkbox"  ng-model="class.is_active">
+					<span class="checkbox-material">
+						<span class="check"></span>
+					</span>
+					<span style="color:{{class.is_active | activeClass}}">Activated</span>
+				</label>
+				
+			
+			</div>
+		</div>
+		<div class="">
+
+			<div class="checkbox">
+				<label >
+
+					<input type="checkbox"  ng-model="class.accept_only_lead">
+					<span class="checkbox-material">
+						<span class="check"></span>
+					</span>
+					Accept Only Leads
+				</label>
+				
+			
+			</div>
+			<div class="checkbox">
+				<label >
+
+					<input type="checkbox"  ng-model="class.accept_only_follow">
+					<span class="checkbox-material">
+						<span class="check"></span>
+					</span>
+					Accept Only Follow
+				</label>
+				
+			
+			</div>
+		</div>
+		
+		<div class="">
+			<label>Remark (Eg. Break)</label>
+			<textarea class="form-control" pleaceholder="Description" ng-model="class.description" value="description"></textarea>
+		</div>
+		<input  type="submit" class="btn btn-primary btn-raised" value="Save {{class | classCode:skills}}">
+	</form>
+
+</section>

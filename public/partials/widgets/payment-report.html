@@ -1,0 +1,26 @@
+<section ng-init="isShow=false">
+	<a  class="btn btn-primary btn-raised" download="somedata.xls" href="" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">Export to Excel</a>
+	<a   class="btn btn-primary btn-raised" download="somedata.csv" href="" onclick="return ExcellentExport.csv(this, 'datatable');">Export to CSV</a>
+	<button ng-click="isShow=!isShow" class="btn btn-success btn-raised">Toggle Preview</button>
+	<table class="table table-striped" id="datatable" ng-show="isShow">
+		<thead>
+			<th>Transaction Date</th>
+			<th>Transaction Time</th>
+			<th>Class</th>
+			<th>From</th>
+			<th>Amount</th>
+			<th>Status</th>
+		</thead>
+		<tbody>
+			 <tr ng-repeat="item in items">
+		        <td>{{item.dateTime | date:'dd-MMM-yyyy'}}</td>
+		        <td>{{item.dateTime | date:'shortTime'}}</td>
+		        <td>{{item.class.code}}</td>
+		        <td>{{item.user.firstname}} {{item.user.lastname}}</td>
+		        <td>{{item.class.amount}}</td>
+		        <td>{{item.status | paymentStatus}}</td>
+		    </tr>
+		</tbody>
+	</table>
+
+</section>

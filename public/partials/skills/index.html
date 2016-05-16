@@ -1,0 +1,8 @@
+<nav-menu></nav-menu>
+<h1>Skills</h1>
+<table class="table table-striped">
+	<tr ng-repeat="item in skills">
+		<td>{{item.name}}</td>
+		<td><a href="#/skills/{{item._id}}">View</a></td>
+	</tr>
+</table>

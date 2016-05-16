@@ -1,0 +1,118 @@
+<nav-menu></nav-menu>
+<div class="member-form" >
+	<h2 ng-show="isRegisterMode">Step 1 : Please fill up your information here.</h2>
+	<form ng-submit="save()">
+		
+		<section >
+			<div class="" >
+				<input type="text " ng-model="member.firstname" ng-required="isRegisterMode" placeholder="First name" class="form-control">
+			</div>
+			<div class="">
+				<input type="text" ng-model="member.lastname" ng-required="isRegisterMode" placeholder="Last name" class="form-control">
+			</div>
+			<div class="">
+				<input type="text" ng-model="member.nickname" ng-required="isRegisterMode" placeholder="Nickname" class="form-control">
+			</div>
+			<div class="">
+				<select class="form-control" ng-model="member.gender" ng-required="isRegisterMode">
+					<option value="" disabled selected>Gender</option>
+					<option value="1">Male</option>
+					<option value="0">Female</option>
+				</select>
+			</div>
+			<div class="">
+				<input type="text" ng-model="member.phone" ng-required="isRegisterMode" placeholder="Phone" class="form-control">
+			</div>
+			<div class="">
+				<input type="email" ng-model="member.email" ng-required="isRegisterMode" placeholder="Email" class="form-control">
+			</div>
+			<div class="">
+				<input type="password" ng-model="member.new_password" ng-required="isRegisterMode" placeholder="Password" class="form-control">
+			</div>
+			<div class="">
+				<input type="password" ng-model="member.renew_password"  ng-required="isRegisterMode" placeholder="Re - Password" class="form-control">
+			</div>
+		</section>
+		<div class="row" show-to-roles="['teacher','admin']" ng-hide="isRegisterMode" ng-repeat="skill in skills track by $index">
+			<div class="col-md-6">
+				{{skill.name}}
+			</div>
+			<div class="col-md-6">
+				<select class="form-control" ng-model="$parent.member.levels[$index].level">
+					<option value="" disabled selected>Level</option>
+						<option value="0">Level 0</option>
+						<option value="1">Level 1</option>
+						<option value="2">Level 2</option>
+						<option value="3">Level 3</option>
+						<option value="4">Level 4</option>
+						<option value="5">Level 5</option>
+				</select>
+				
+				<div ng-init="$parent.member.levels[$index].skill = skill._id"></div>
+			</div>
+		</div>
+		 <button ngf-select  ng-required="isRegisterMode" ng-model="picFile" accept="image/*">
+            Select Picture</button>
+        <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+             class="cropArea">
+            <img-crop image="picFile  | ngfDataUrl"                 
+            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+            </img-crop>
+        </div>
+        
+
+        
+		<div class="" show-to-roles="['admin']" ng-hide="isRegisterMode">
+			<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="member.is_active">
+						<span class="checkbox-material">
+							<span class="check"></span>
+						</span>
+						{{member.is_active | isMemberActive}}
+					</label>
+				</div>
+		</div>
+		<div class="" show-to-roles="['admin']"  ng-hide="isRegisterMode">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="member.permissions.payment">
+					<span class="checkbox-material">
+						<span class="check"></span>
+					</span>
+					Can Manage Payment
+				</label>
+			</div>
+		</div>
+		<div class="" show-to-roles="['admin']"  ng-hide="isRegisterMode">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="member.permissions.teacher">
+					<span class="checkbox-material">
+						<span class="check"></span>
+					</span>
+					Is a teacher
+				</label>
+			</div>
+		</div>
+		<div class="" show-to-roles="['admin']"  ng-hide="isRegisterMode">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="member.permissions.admin">
+					<span class="checkbox-material">
+						<span class="check"></span>
+					</span>
+					Can Manage Students/Class
+				</label>
+			</div>
+		</div>
+		<div class="" show-to-roles="['admin']" ng-hide="isRegisterMode">
+			<textarea class='form-control' ng-model="member.mark"></textarea>
+		</div>
+		<!--{{member}}-->
+		<div class="">
+			<input type="submit" class='btn btn-primary btn-raised' value="Save" />
+			<a ng-hide="isRegisterMode" show-to-roles="['admin']" href="" ng-click="remove()" class="btn btn-danger btn-raised">Remove</a>
+		</div>
+	</form>
+</div>

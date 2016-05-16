@@ -1,0 +1,28 @@
+<section>
+<input type="text" ng-model="q" placeholder="Filter" class="form-control" />
+<table class="table table-striped">
+	<thead>
+		<th></th>
+		<th>Name</th>
+		<th>Last Name</th>
+		<th>Gender</th>
+		<th>Email</th>
+		<th>Phone</th>
+		<th>Active</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="member in members | filter:q">
+			<td><img check-image ng-src="hidden/images/profile/{{member._id}}"  style="max-width:100px"/></td>
+			<td><a href="#/members/{{member._id}}">{{member.firstname}}({{member.nickname}})</a></td>
+			<td><a href="#/members/{{member._id}}">{{member.lastname}}</a></td>
+			<td>{{member.gender | gender}}</td>
+			<td>{{member.email}}</td>
+			<td><a href="tel:{{member.phone}}">{{member.phone}}</a></td>
+			<td>{{member.is_active}}</td>
+			<td><a href="#/members/{{member._id}}/update" >Edit</a></td>
+		</tr>
+	</tbody>
+
+</table>
+</section>
